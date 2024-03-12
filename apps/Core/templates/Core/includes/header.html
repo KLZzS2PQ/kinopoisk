@@ -1,0 +1,49 @@
+{% load static %}
+<header class="d-flex ">
+    <nav class="navbar w-100 navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid justify-content-center gap-3">
+            <a class="navbar-brand m-0" href="#">
+                <img src="{% static 'Core/img/logo.png' %}" alt="Logo" width="40" height="40"
+                     class="d-inline-block align-text-top"/></a>
+            <a class="navbar-brand m-0" href="#">Navbar</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse flex-grow-0    " id="navbarNav">
+                <ul class="frcc  mb-2 mb-lg-0 p-0
+                text-center gap-2 " style="list-style: none;">
+                    <li>
+{#                        <a class="nav-link" href="{% url 'orders' %}">Заказы</a>#}
+                    </li>
+                    <li>
+{#                        <a class="nav-link" href="{% url 'catalog' %}">Каталог</a>#}
+                    </li>
+                    {% if not request.user.is_authenticated %}
+                        <li>
+                            <a class="nav-link bg-secondary py-1 px-3 rounded-2 text-white text-opacity-75" href="{% url 'singin' %}">Sing In</a>
+                        </li>
+                        <li>
+                            <a class="nav-link bg-secondary py-1 px-3 rounded-2 text-white text-opacity-75" href="{% url 'singup' %}">Sing Up</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'singout' %}">
+                                <i class="fa-solid fa-right-from-bracket text-body-emphasis opacity-50"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'profile' %}">
+                                <i class="fa-solid fa-user text-body-emphasis opacity-50"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="position-relative btn-theme" style="height: 16px; width: 16px;  line-height: 0;">
+                        <img class="btn-dark-theme position-absolute top-0 " style="height: 16px; filter: invert(.55)" src="{% static 'Core/img/icons/moon_icon.png' %}" alt="">
+                        <img class="btn-white-theme" style="height: 16px;  vertical-align: top; opacity: 0; filter: invert(.4)" src="{% static 'Core/img/icons/sun_icon.png' %}" alt="">
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>

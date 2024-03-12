@@ -1,0 +1,15 @@
+{% extends "Core/base.html" %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block main %}
+    <h1 class="text-center">Вход</h1>
+    {% if error %}
+        <span class="text-danger mx-auto">{{ error }}</span>
+    {% endif %}
+    <form action="" method="POST" class="fcc mx-auto gap-2" style="width: 400px">
+        {% csrf_token %}
+        <input type="text" name="username" class="form-control">
+        <input type="password" name="password" class="form-control">
+        <button type="submit" class="bg-transparent border border-secondary rounded-2">Продолжить</button>
+    </form>
+{% endblock %}

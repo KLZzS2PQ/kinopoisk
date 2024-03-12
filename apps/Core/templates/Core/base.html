@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'Core/css/bootstrap.min.css' %}">
+    <script src="{% static 'Core/js/bootstrap.bundle.min.js' %} " defer></script>
+    <link rel="stylesheet" href="{% static 'Core/css/base.css' %}">
+    <script src="{% static 'Core/js/font-awesome.js' %}"></script>
+    <script defer src="{% static 'Core/js/theme.js' %}"></script>
+    {% block head %}{% endblock %}
+</head>
+<body class="d-flex flex-column" data-bs-theme="dark">
+{% include "Core/includes/header.html" %}
+<main class="flex-grow-1 fccc">
+    {% block main %}{% endblock %}
+</main>
+{% include "Core/includes/footer.html" %}
+</body>
+</html>
