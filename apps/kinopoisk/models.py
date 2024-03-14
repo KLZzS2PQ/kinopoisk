@@ -39,12 +39,14 @@ class Movie(Model):
     release_date = DateField()
     rating = FloatField()
     duration = PositiveSmallIntegerField()
-    genres = ManyToManyField(Genre)
+    genres = ManyToManyField(
+        Genre, related_name='movies'
+    )
     actors = ManyToManyField(
-        MoviePerson, related_name='actor_movies'
+        MoviePerson, related_name='acted_in_movies'
     )
     directors = ManyToManyField(
-        MoviePerson, related_name='director_movies'
+        MoviePerson, related_name='directed_movies'
     )
     budget = PositiveIntegerField()
     poster = ImageField(

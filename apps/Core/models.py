@@ -5,3 +5,4 @@ from django.db import models
 class User(AbstractUser):
     avatar = models.ImageField(upload_to='Core/images/user/')
 
+
