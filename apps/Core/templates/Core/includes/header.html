@@ -13,10 +13,16 @@
                 <ul class="frcc  mb-2 mb-lg-0 p-0
                 text-center gap-2 " style="list-style: none;">
                     <li>
-{#                        <a class="nav-link" href="{% url 'orders' %}">Заказы</a>#}
+                        <a class="nav-link" href="{% url 'movie_list' %}">Фильмы</a>
                     </li>
                     <li>
-{#                        <a class="nav-link" href="{% url 'catalog' %}">Каталог</a>#}
+                        <a class="nav-link" href="{% url 'actors_list' %}">Актеры</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'director_list' %}">Режиссеры</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'genre_list' %}">Жанры</a>
                     </li>
                     {% if not request.user.is_authenticated %}
                         <li>

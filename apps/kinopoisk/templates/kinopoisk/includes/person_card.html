@@ -1,0 +1,5 @@
+<a href="{% url 'person_detail' person_id=person.id %}" class="
+mw-200px w-100 fc hover-scale-2 gap-2 text-decoration-none text-dark-emphasis">
+    <img class="flex-grow-1 object-fit-cover" src="{{ person.photo.url }}" alt="">
+    <h2 class="fs-4 text-center ">{{ person.name }}</h2>
+</a>

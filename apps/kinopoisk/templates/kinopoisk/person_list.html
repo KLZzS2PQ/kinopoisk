@@ -1,6 +1,13 @@
 {% extends "Core/base.html" %}
 {% load static %}
-{% block title %}Genres{% endblock %}
+{% block title %}{% endblock %}
 {% block main %}
-
+    <h1 class="mb-3 mt-2">{{ persons.0.role|title }}</h1>
+    <div class="gap-2 frc flex-wrap px-2 mw-1000px ">
+        {% for person in persons %}
+            {% include "kinopoisk/includes/person_card.html" with movie=movie %}
+        {% endfor %}
+    </div>
 {% endblock %}
+
+

@@ -2,5 +2,13 @@
 {% load static %}
 {% block title %}Genres{% endblock %}
 {% block main %}
-
+    <h1 class="mb-3">Жанры</h1>
+    <div class="frc flex-wrap px-2 mw-750px gap-2 ">
+        {% for genre in genres %}
+            <a href="{% url 'genre_detail' genre_id=genre.id %}" class="
+            px-3 py-2 border-1 border-secondary border rounded-2
+             text-decoration-none text-dark-emphasis hover-scale-3
+            ">{{ genre.name|title }}</a>
+        {% endfor %}
+    </div>
 {% endblock %}

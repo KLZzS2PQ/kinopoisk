@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "Core/base.html" %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block main %}
+    <div class="fccs justify-content-md-center flex-md-row m-sm-0 gap-5 w-90 mx-auto ">
+        <img class="h-min mx-md-0 mx-auto" src="{{ person.photo.url }}" alt="">
+        <div class="fc mx-auto mx-md-0">
+            <h1 class="mb-4 text-center me-md-auto d-inline">{{ person.name|title }}</h1>
+            <span class="text-center me-md-auto d-inline">Дата рождения: {{ person.birth_date }}</span>
+            <div class="mt-3 frc gap-3 mw-550px flex-wrap bg-black-30 p-4 rounded-4">
+                {% for movie in movies %}
+                   {% include 'kinopoisk/includes/movie_card.html' with movie=movie movie_card_classes='mw-150px ' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

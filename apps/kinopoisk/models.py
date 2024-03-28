@@ -23,14 +23,19 @@ class MoviePerson(Model):
         blank=True, null=True
     )
     birth_date = DateField()
-    biography = TextField()
     photo = ImageField(upload_to='kinopoisk/images/person/photos/',
                        blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Genre(Model):
     name = CharField(max_length=255)
     description = TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Movie(Model):

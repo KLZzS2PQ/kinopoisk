@@ -2,5 +2,10 @@
 {% load static %}
 {% block title %}Movies{% endblock %}
 {% block main %}
-    
+    <h1 class="my-3">Фильмы</h1>
+    <div class="frc flex-wrap gap-3 mx-auto mw-1000px pb-4">
+        {% for movie in movies %}
+            {% include "kinopoisk/includes/movie_card.html" with movie=movie movie_card_classes='mw-300px' %}
+        {% endfor %}
+    </div>
 {% endblock %}

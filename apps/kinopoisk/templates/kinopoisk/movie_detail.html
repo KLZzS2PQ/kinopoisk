@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "Core/base.html" %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'kinopoisk/css/movie.css' %}">
+{% endblock %}
+{% block title %}{{ movie.title }}{% endblock %}
+{% block main %}
+    <div class="fccs justify-content-md-center flex-md-row m-sm-0 gap-5 w-90 mx-auto mw-700px">
+        <img class="h-min mx-md-0 mx-auto" src="{{ movie.poster.url }}" alt="">
 
-</body>
-</html>
+        <div class="fc mx-auto mx-md-0">
+            <div class="fr gap-2">
+                <h1 class="mb-0 me-auto text-center d-inline">{{ movie.title }}</h1>
+                <div class="frcc">
+                    <img src="{% static 'Core/img/icons/branch.svg' %}" alt="">
+                    <span class="rating-color fs-1">{{ movie.rating }}</span>
+                    <img class="invert-w" src="{% static 'Core/img/icons/branch.svg' %}" alt="">
+                </div>
+            </div>
+            <span class="text-secondary-emphasis mb-1">
+                {% for genre in movie.genres.all %}
+                    <span>
+                        {% if forloop.first %}{{ genre.name|title }}{% else %}{{ genre.name }}{% endif %}
+                        {% if not forloop.last %},{% endif %}
+                    </span>
+                {% endfor %}
+            </span>
+            <span class="text-center me-md-auto d-inline">Дата выхода: {{ movie.release_date }}</span>
+            <span class="text-center me-md-auto d-inline">Длительность: {{ movie.duration }} мин.</span>
+            <span class="text-center me-md-auto d-inline">Бюджет: {{ movie.budget }}$</span>
+            <h5 class="mt-3">Описание</h5>
+            <p class="mb-3" style="text-indent: 1rem">{{ movie.description }}</p>
+            <div>
+                <div class="mb-2">
+                    <h5>Актеры</h5>
+                    <ul class="fc">
+                        {% for actor in movie.actors.all %}
+                            <li>
+                                <a href="{% url 'person_detail' person_id=actor.id %}"
+                                   class="text-light text-opacity-75">
+                                    {{ actor.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <h5>Режиссеры</h5>
+                    <ul class="fc">
+                        {% for director in movie.directors.all %}
+                            <li>
+                                <a href="{% url 'person_detail' person_id=director.id %}"
+                                   class="text-light text-opacity-75">
+                                    {{ director.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

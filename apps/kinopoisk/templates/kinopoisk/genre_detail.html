@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "Core/base.html" %}
+{% load static %}
+{% block title %}Genres{% endblock %}
+{% block main %}
+    <h1 class="mb-4">{{ genre.name|title }}</h1>
+    <div class="fr gap-3 mw-1000px flex-wrap">
+        {% for movie in movies %}
+            {% include 'kinopoisk/includes/movie_card.html' with movie=movie %}
+        {% endfor %}
+    </div>
+{% endblock %}
