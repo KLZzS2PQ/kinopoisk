@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from apps.Core.models import User
-from apps.kinopoisk.models import MoviePerson, Genre, Movie, MovieReview
+from apps.kinopoisk.models import MoviePerson, Genre, Movie, MovieReview, SibnetVideo, UserMovieReviewVote
 
 
 @admin.register(MoviePerson)
@@ -30,3 +30,12 @@ class MovieAdmin(admin.ModelAdmin):
 @admin.register(MovieReview)
 class MovieReviewAdmin(admin.ModelAdmin):
     list_display = ('author', 'movie',)
+
+
+@admin.register(SibnetVideo)
+class SibnetVideoAdmin(admin.ModelAdmin):
+    list_display = ('id',)
+
+@admin.register(UserMovieReviewVote)
+class UserMovieReviewVoteAdmin(admin.ModelAdmin):
+    list_display = ('id',)
